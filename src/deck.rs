@@ -1,10 +1,11 @@
-use std::iter::IntoIterator;
+use std::iter::FromIterator;
 
 use rand::seq::SliceRandom;
 
 use crate::card;
 
 
+#[derive(Debug)]
 pub struct Deck<CardType: card::Card> {
     cards: Vec<CardType>,
 }
@@ -13,6 +14,10 @@ impl<CardType: card::Card> Deck<CardType> {
     pub fn shuffle(&mut self){
         let mut rng = rand::thread_rng();
         self.cards.shuffle(&mut rng);
+    }
+
+    pub fn new52() -> Self{
+        Self::from_iter(0..52)
     }
 }
 

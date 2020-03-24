@@ -1,11 +1,13 @@
 pub trait Card: std::fmt::Display + std::convert::From<u8> {}
 
+#[derive(Debug)]
 pub enum Royality {
     Jack,
     Queen,
     King,
 }
 
+#[derive(Debug)]
 pub enum Value {
     Numeric(u8),
     Royal(Royality),
@@ -13,6 +15,7 @@ pub enum Value {
     Joker,
 }
 
+#[derive(Debug)]
 pub enum Suit {
     Hearts,
     Spades,
@@ -20,6 +23,7 @@ pub enum Suit {
     Clubs,
 }
 
+#[derive(Debug)]
 pub struct PlayingCard {
     value: Value,
     suit: Suit,
@@ -107,3 +111,5 @@ impl std::convert::From<u8> for PlayingCard {
         }
     }
 }
+
+impl Card for PlayingCard {}
