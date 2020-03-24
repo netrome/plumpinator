@@ -1,13 +1,15 @@
+use serde::{Serialize, Deserialize};
+
 pub trait Card: std::fmt::Display + std::convert::From<u8> {}
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Royality {
     Jack,
     Queen,
     King,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Value {
     Numeric(u8),
     Royal(Royality),
@@ -15,7 +17,7 @@ pub enum Value {
     Joker,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum Suit {
     Hearts,
     Spades,
@@ -23,7 +25,7 @@ pub enum Suit {
     Clubs,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PlayingCard {
     value: Value,
     suit: Suit,

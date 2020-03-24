@@ -2,10 +2,11 @@ use std::cmp;
 use std::iter::FromIterator;
 
 use rand::seq::SliceRandom;
+use serde::{Serialize, Deserialize};
 
 use crate::card;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Deck<CardType: card::Card> {
     cards: Vec<CardType>,
 }

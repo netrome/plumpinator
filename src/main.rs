@@ -6,10 +6,13 @@ fn main() {
     println!("Hello, world!");
     println!("{:?}", deck);
 
+    deck.shuffle();
     let my_hand = deck.take(8);
     let your_hand = deck.take(8);
 
     println!(".....");
     println!("My hand: {:?}", my_hand);
     println!("Your hand: {:?}", your_hand);
+
+    println!("{}", serde_json::to_string_pretty(&my_hand).unwrap());
 }
