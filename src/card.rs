@@ -85,7 +85,7 @@ impl std::convert::From<u8> for Suit {
             0 => Suit::Clubs,
             1 => Suit::Diamonds,
             2 => Suit::Spades,
-            _ => Suit::Hearts
+            _ => Suit::Hearts,
         }
     }
 }
@@ -98,7 +98,7 @@ impl std::convert::From<u8> for Value {
             10 => Value::Royal(Royality::Queen),
             11 => Value::Royal(Royality::King),
             12 => Value::Ace,
-            _ => Value::Joker
+            _ => Value::Joker,
         }
     }
 }
