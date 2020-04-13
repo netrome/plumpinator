@@ -22,6 +22,16 @@ fn create_deck(name: String) -> Json<Deck<PlayingCard>> {
 }
 
 
+#[post("/set/<name>", data = "<deck>")]
+fn set_deck(name: String, deck: Json<Deck<PlayingCard>>) -> &'static str {
+    let file = File::create(format!("{}.json", name)).unwrap();
+    serde_json::to_writer_pretty(file, &deck.into_inner()).unwrap();
+
+    "Ok"
+}
+
+
+
 #[get("/deck/<name>/<number>")]
 fn get_hand(name: String, number: usize) -> Json<Deck<PlayingCard>> {
     let mut deck = if let Ok(file) = File::open(format!("{}.json", name))
